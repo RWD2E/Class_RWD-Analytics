@@ -39,6 +39,8 @@ vignettes/*.pdf
 .Renviron
 
 # Private folders
+.private/*
+.archives/*
+
+# Data folders
 *data/*
-*private/*
-*/.*/*
