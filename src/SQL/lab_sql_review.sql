@@ -9,31 +9,31 @@
   "Select..." 
 */
 -- Ex: Spot check first few rows from a CDM table
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC limit 20;
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC limit 20;
 
 -- Ex: How many patients in total do we have in our CDM datamart? 
-select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC;
-select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC;
+select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC;
+select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC;
 
 -- Ex: How many encounters in total do we have in our CDM datamart? 
-select count(distinct encounterid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER;
+select count(distinct encounterid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER;
 
 /* 
   "Select...Where..." 
 */
 -- Ex: How many Asian females have ever been seen in our healthcare system? 
-select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 where sex = 'F' and race = '02';
 
 -- Ex: How many Asian or African American patients have ever been seen in our healthcare system? 
-select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 where race='02' or race = '03';
 
 -- Ex: How many patients have ever been seen in our healthcare system who are currently above 65 years old? 
-select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 where datediff(year,birth_date,current_date) > 65;
 
-select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+select count(patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 where datediff(day,birth_date,current_date)/365.25 > 65;
 
 
@@ -42,15 +42,15 @@ where datediff(day,birth_date,current_date)/365.25 > 65;
   "Select...Where...Like..."
 */
 -- Ex: How many patients have been diagnosed with ALS? 
-select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DIAGNOSIS
+select count(distinct patid) from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DIAGNOSIS
 where dx in ('335.20','G12.21');
 
 -- Ex: How many patients have been diagnosed with Motor Neuron Disease? 
-select count(distinct patid) as pat_cnt from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DIAGNOSIS
+select count(distinct patid) as pat_cnt from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DIAGNOSIS
 where dx like '335.2%' or dx like 'G12.2%';
 
 -- Ex: How many patients have been diagnosed with Hypertensive Disease (I10, I11, I12, I13, I14, I15, I16,401,402,403,404,405)? 
-select count(distinct patid) as pat_cnt from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DIAGNOSIS
+select count(distinct patid) as pat_cnt from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DIAGNOSIS
 where dx like 'I10%' or 
       dx like 'I11%' or 
       dx like 'I12%' or
@@ -71,17 +71,17 @@ where dx like 'I10%' or
 */
 
 -- Ex: When is the most recent inpatient visit to our healthcare system? 
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where enc_type in ('IP','EI') and admit_date < to_date('2022-08-01')
 order by admit_date desc
 ;
 
 select max(admit_date) as recent_admit_date
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where enc_type in ('IP','EI') and admit_date < to_date('2022-08-01')
 ;
 
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where enc_type in ('IP','EI')
 order by admit_date
 ;
@@ -89,7 +89,7 @@ order by admit_date
 
 
 -- Ex: Who is the oldest patient ever recorded in our healthcare system? (assume they are all still alive) 
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 order by birth_date;
 
 /* 
@@ -97,19 +97,19 @@ order by birth_date;
 */
 -- Ex: How many patients for each racial group?
 select race, count(distinct patid) as pat_cnt 
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC
 group by race
 order by pat_cnt desc;
 
 -- Ex: Generate two frequency tables for different encounter type (e.g., ED, AV, IP,...) in 2019 vs. 2020? 
 select enc_type, count(distinct encounterid) as enc_cnt
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where admit_date between to_date('2017-01-01') and to_date('2017-12-31')
 group by enc_type
 order by enc_cnt desc;
 
 select enc_type, count(distinct encounterid) as enc_cnt
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where admit_date between to_date('2020-01-01') and to_date('2020-12-31')
 group by enc_type
 order by enc_cnt desc;
@@ -121,33 +121,33 @@ order by enc_cnt desc;
 -- Ex: Collect the list of inpatient visits with LOS >= 2 days
 -- drop table enc_los_ge2;
 create or replace table enc_los_ge2 as 
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER
 where datediff(day,admit_date,discharge_date) >= 2 and enc_type in ('IP','EI');
 -- inspect table
 select * from enc_los_ge2;
 
 -- Ex: Collect all secrum creatinine lab results
 create or replace table lab_scr as
-select * from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_LAB_RESULT_CM
+select * from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_LAB_RESULT_CM
 where LAB_LOINC in ('2160-0','38483-4');
 
 -- Ex: Collect the list of all Office visits
 create or replace table office_vis as 
 select patid, encounterid, px_date 
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_PROCEDURES
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_PROCEDURES
 where PX in ('99201','99202','99203','99204','99205',
              '99212','99213','99214','99215');
 
 -- Ex: Collect all patients who had a record of SBP >= 140mmhg
 create or replace table sbp_ge140 as 
 select patid, encounterid, measure_date, systolic, diastolic 
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_VITAl
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_VITAl
 where SYSTOLIC >= 140;
 
 -- Ex: Collect all patients with a historical diagnosis of hypertensive diease
 create or replace table htn_history as 
 select patid, min(dx_date) as min_dx_date
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DIAGNOSIS
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DIAGNOSIS
 where dx like 'I10%' or 
       dx like 'I11%' or 
       dx like 'I12%' or
@@ -171,8 +171,8 @@ group by patid;
 create or replace table peds_ip as
 select a.patid, a.birth_date, b.admit_date, b.discharge_date,
        datediff(day,a.birth_date,b.admit_date)/365.25 as age_at_admit
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC a
-join DEIDENTIFIED_PCORNET_CDM.CDM.DEID_ENCOUNTER b
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC a
+join DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_ENCOUNTER b
 on a.patid = b.patid
 where datediff(day,a.birth_date,b.admit_date)/365.25 < 18 and
       b.enc_type in ('IP','EI');
@@ -234,14 +234,14 @@ select patid, race,
        case when race in ('NI','UN') then 'NI'
             else race
             end as race_group
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_DEMOGRAPHIC;
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_DEMOGRAPHIC;
 
 -- Ex: Following the WHO definition, how many adult patients are underweight, normal, overweight and obese? 
 create or replace table bmi_calculated as
 select patid, original_bmi, 
        round(wt/(ht*ht)*703) as calculated_bmi,
        NVL(original_bmi, round(wt/(ht*ht)*703)) as combined_bmi 
-from DEIDENTIFIED_PCORNET_CDM.CDM.DEID_VITAL
+from DEIDENTIFIED_PCORNET_CDM.CDM_C016R033.DEID_VITAL
 where (
        original_bmi is not null or
        (wt is not null and ht is not null)
