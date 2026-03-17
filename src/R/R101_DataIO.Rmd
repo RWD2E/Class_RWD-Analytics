@@ -17,9 +17,16 @@ pacman::p_load(
 ```
 
 # Make Database connection
-First, will need to setup ODBC connector object (i.e. Data Source Name, or, DSN).You can also refer to the AWS Service Workbench User Manual for more details. 
+First, will need to setup ODBC connector object (i.e. Data Source Name, or, DSN). You will need to grab a couple of snowflake configuration variables from your Snowflake account; 
+1. account = {Account/Server URL}
+2. user = {...@umsystem.edu}
+3. role = {Role}
+4. authenticator = "externalbrowser"
+5. database = "CLASS_MEMBER_BBME8550_DB"
+6. warehouse = "NEXTGENBMI_WH"
+For consistency with codes below, we will name this DSN `snowflake_deid`
 
-Use `DBI:dbConnect` and `odbc::odbc()` function with stored credentials to make database connection. Due to re-direction to Umsystem log-in page with the Shibboleth method, you may not be able to Knit this report at once. 
+Then, use `DBI:dbConnect` and `odbc::odbc()` function with stored credentials to make database connection. Due to re-direction to Umsystem log-in page with the Shibboleth method, you may not be able to Knit this report at once. 
 
 ```{r db_connection}
 # you can directly put your credential in the function
