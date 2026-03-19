@@ -22,7 +22,7 @@ First, will need to setup ODBC connector object (i.e. Data Source Name, or, DSN)
 2. user = {...@umsystem.edu}
 3. role = {Role}
 4. authenticator = "externalbrowser"
-5. database = "CLASS_MEMBER_BBME8550_DB"
+5. database = "CLASS_MEMBER_BBME8550_STUDENTS_DB"
 6. warehouse = "NEXTGENBMI_WH"
 For consistency with codes below, we will name this DSN `snowflake_deid`
 
@@ -44,7 +44,7 @@ The classic method for loading data from SQL database is to directly send SQL qu
 ```{r}
 dat1a<-dbGetQuery(
     myconn,  # connection object
-    "select * from ALS_RILUZOLE_DEATH_FINAL"  # sql codes
+    "select * from CLASS_MEMBER_BBME8550_STUDENTS_DB.PUBLIC.ALS_RILUZOLE_DEATH_FINAL"  # sql codes
 )
 ```
 
@@ -63,7 +63,7 @@ dat1b<-tbl(
 R markdown further simplified the above codes for embedding SQL queries by including "SQL code chunks". SQL code chunk is implemented with the chunk header of parameters `sql, connection, output.var`. 
 
 ```{sql, connection=myconn, output.var="dat1c"}
-select * from ALS_RILUZOLE_DEATH_FINAL
+select * from CLASS_MEMBER_BBME8550_STUDENTS_DB.PUBLIC.ALS_RILUZOLE_DEATH_FINAL
 ```
 
 # Save intermediate data
@@ -71,34 +71,34 @@ Please create a sub-folder under the working directory as `./data` and all raw a
 
 ## save dataframe as Rdata file (.rda)
 ```{r}
-saveRDS(dat1a,file="C:/project/data/als_aset.rda")
+saveRDS(dat1a,file="C:/proj/data/als_aset.rda")
 ```
 
 Then, how do we read the .rda file back into R?
 
 ```{r}
-dat1_rds<-readRDS("C:/project/data/als_aset.rda")
+dat1_rds<-readRDS("C:/proj/data/als_aset.rda")
 ```
 
 ## save dataframe as CSV file (.csv)
 ```{r}
-write.csv(dat1a,file="C:/project/data/als_aset.csv")
+write.csv(dat1a,file="C:/proj/data/als_aset.csv")
 ```
 
 Then, how do we read the .csv file back into R?
 
 ```{r}
-dat1_csv<-read.csv("C:/project/data/als_aset.csv")
+dat1_csv<-read.csv("C:/proj/data/als_aset.csv")
 ```
 
 ## save dataframe as delimiter separated file (.txt)
 ```{r}
-write.table(dat1a,file="C:/project/data/als_aset.txt",sep="|")
+write.table(dat1a,file="C:/proj/data/als_aset.txt",sep="|")
 ```
 
 Then, how do we read the .csv file back into R?
 
 ```{r}
-dat1_txt<-read.table("C:/project/data/als_aset.txt",sep="|")
+dat1_txt<-read.table("C:/proj/data/als_aset.txt",sep="|")
 ```
 
