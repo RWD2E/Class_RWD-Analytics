@@ -17,7 +17,7 @@ pacman::p_load(
 
 
 ```{r}
-df<-readRDS("C:/project/data/als_aset.rda")
+df<-readRDS("C:/proj/data/als_aset.rda")
 ```
 
 ## Quantitative and Qualitative Data (11.2.3)
@@ -47,6 +47,7 @@ df_add_agegrp<-df %>%
     AGE_AT_DX_DATE1>=75&AGE_AT_DX_DATE1<80~'AgeGrp4',
     AGE_AT_DX_DATE1>=80~'AgeGrp5')
   )
+  
 #print first 6 rows
 head(df_add_agegrp)
 
@@ -118,7 +119,7 @@ General steps for data preprocessing are **Data Integration**, **Data Abstractio
 ##=========================================================================================
 # "ymd" and "difftime" functions from "lubridate" package to calculate date difference
 # The "lubridate" package in tidyverse provides functions for operations on dates and times
-# more on: https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html
+# more on: https://cran.r-proj.org/web/packages/lubridate/vignettes/lubridate.html
 ##=======================================================================================
 df_add_days2outcome<-df %>%
   mutate(OUTCOME_DATE_TRUNC = floor_date(OUTCOME_DATE,'day')) %>%
@@ -171,7 +172,7 @@ pacman::p_load(DBI, odbc)
     pwd = ""  # leave the password empty if using Shibboleth (as you will be prompted to the university log-in portal)
 ) 
  
-bmi<-dbGetQuery(myconn,"select * from CLASS_MEMBER_BBME8550_STUDENTS_DB.PUBLIC.ALS_ELIG_BMI")
+bmi<-dbGetQuery(myconn,"select * from CLASS_MEMBER_BBME8550_DB.PUBLIC.ALS_ELIG_BMI")
 head(bmi)
 ```
 
@@ -328,5 +329,5 @@ head(df2)
 
 
 ```{r}
-saveRDS(df2,file="C:/project/data/als_aset2.rda")
+saveRDS(df2,file="C:/proj/data/als_aset2.rda")
 ```
