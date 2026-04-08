@@ -172,7 +172,7 @@ pacman::p_load(DBI, odbc)
     pwd = ""  # leave the password empty if using Shibboleth (as you will be prompted to the university log-in portal)
 ) 
  
-bmi<-dbGetQuery(myconn,"select * from CLASS_MEMBER_BBME8550_DB.PUBLIC.ALS_ELIG_BMI")
+bmi<-dbGetQuery(myconn,"select * from CLASS_MEMBER_BBME8550_STUDENTS_DB.PUBLIC.ALS_ELIG_BMI")
 head(bmi)
 ```
 
