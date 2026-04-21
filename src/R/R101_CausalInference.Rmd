@@ -25,7 +25,7 @@ Load the analytic dataset used previously for the ALS cohort:
 
 ```{r}
 #load data
-aset<-readRDS("C:/project/data/als_aset2.rda") %>%
+aset<-readRDS("C:/proj/data/als_aset2.rda") %>%
   mutate(MORT_1YR = case_when(OUTCOME_STATUS==1&DAYS_ALS1DX_TO_OUTCOME<=365~1,TRUE~0)) %>%
   mutate(status=OUTCOME_STATUS,
          time=DAYS_ALS1DX_TO_OUTCOME) %>%

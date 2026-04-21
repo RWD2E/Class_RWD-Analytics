@@ -1,7 +1,7 @@
 ---
 title: "machine learning - risk stratification modeling"
 author: "Xing Song"
-date: '2022-11-29'
+date: "04/25/2026"
 output: html_document
 ---
 
@@ -23,7 +23,7 @@ Load the analytic dataset used previously for the ALS cohort:
 
 ```{r}
 #load data
-aset<-readRDS("C:/Users/Administrator/Documents/proj/data/final_set2.rda") %>%
+aset<-readRDS("C:/proj/data/final_set2.rda") %>%
   mutate(MORT_1YR = case_when(OUTCOME_STATUS==1&DAYS_ALS1DX_TO_OUTCOME<=365~1,TRUE~0)) %>%
   mutate(SEX_F = case_when(SEX=='F' ~ 1,
                            TRUE ~ 0)) %>%
