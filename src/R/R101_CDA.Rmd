@@ -139,6 +139,7 @@ cor.test(aset$AGE_AT_DX_DATE1,aset$RILUZOLE_DUR,method="kendall")
 
 
 *Kolmogorov-Smirnov Tests*
+KS-test whether the two numerical variables are coming from the same distribution, which is a much stronger hypothesis compared with 
 
 ```{r}
 ks.test(aset$AGE_AT_DX_DATE1,aset$RILUZOLE_DUR)

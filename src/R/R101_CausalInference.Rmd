@@ -72,7 +72,7 @@ pacman::p_load(DBI,odbc,dbplyr)
 myconn <- DBI::dbConnect(
   drv = odbc::odbc(),
   dsn = "snowflake_deid",
-  uid = "XSM7F@UMSYSTEM.EDU", # need to modify to your own user id
+  uid = rstudioAPI::prompt(), # need to modify to your own user id
   pwd = ""
 )
 
