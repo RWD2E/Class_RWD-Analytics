@@ -10,6 +10,7 @@ Let's do some preparation for the class by running the following chunk of codes
 ```{r setup}
 #load packages
 pacman::p_load(
+    rstudioAPI,
     tidyverse,
     survival,
     survminer,
