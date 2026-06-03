@@ -11,16 +11,14 @@ The type of IRB submission required depends on the data access level needed for 
 ### Option A. Non-Human Subjects Research Determination
 If your project can be conducted entirely using de-identified data and investigators will not have access to direct identifiers, dates of service, dates of birth, addresses, medical record numbers, or other HIPAA identifiers, you may be eligible for a Non-Human Subjects Research (NHSR) determination. Here are sample language that you can use to describe the de-identified database access on HABITAT: 
 
-```
-The study will utilize data from the NextGen Precision Health Research Data Lake (IRB#2072551). The dataset has been fully de-identified in accordance with HIPAA standards, and investigators will not have access to any HIPAA identifiers or any information that could reasonably be used to identify individuals. Data are provided solely for secondary research purposes and cannot be linked back to individual patients by study personnel.
-```
+
+> The study will utilize data from the NextGen Precision Health Research Data Lake (IRB#2072551). The dataset has been fully de-identified in accordance with HIPAA standards, and investigators will not have access to any HIPAA identifiers or any information that could reasonably be used to identify individuals. Data are provided solely for secondary research purposes and cannot be linked back to individual patients by study personnel.
+
 
 ### Option B. IRB Exemption (Category 4)
 If your project requires access to a Limited Dataset (LDS) or other identifiable clinical data elements not available within the de-identified environment, you must submit an IRB application and may be eligible for Exempt Category 4 review. Here are sample language that you can use to describe the LDS data access on HABITAT: 
 
-```
-This study involves secondary research using existing clinical and administrative data maintained within the NextGen Precision Health Research Data Lake (IRB#2072551). Investigators will access only the minimum necessary information required to conduct the study, including dates and some geographical information below state. Data access will occur within approved secure research computing environment (HABITAT), and no attempt will be made to identify or contact individual patients. The study qualifies for Exempt Category 4 because it involves secondary research use of identifiable private information in accordance with applicable regulatory requirements.
-```
+> This study involves secondary research using existing clinical and administrative data maintained within the NextGen Precision Health Research Data Lake (IRB#2072551). Investigators will access only the minimum necessary information required to conduct the study, including dates and some geographical information below state. Data access will occur within approved secure research computing environment (HABITAT), and no attempt will be made to identify or contact individual patients. The study qualifies for Exempt Category 4 because it involves secondary research use of identifiable private information in accordance with applicable regulatory requirements.
 
 
 ## Step 2. CBMI Intake Process
